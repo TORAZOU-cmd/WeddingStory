@@ -18,14 +18,14 @@ body {
 
 .container {
     width: 90%;
-    max-width: 960px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
 /* Hero Section */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://placehold.co/1200x800/e2f5e3/fde7f0?text=Our+Story');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('top.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -95,4 +95,31 @@ footer {
     color: var(--text-light);
     text-align: center;
     padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    main section {
+        padding: 40px 0;
+    }
 }
