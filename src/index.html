@@ -13,7 +13,7 @@
     <header class="site-header">
         <div class="header-container">
             <a href="#" class="site-title">Wedding Story</a>
-            <nav class="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#greeting">Welcome</a></li>
@@ -22,7 +22,7 @@
                     <li><a href="#map">Access Map</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Open navigation menu">
+            <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,7 +31,7 @@
     </header>
 
     <div class="hero">
-        <img src="top.webp" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high">
+        <img src="top.webp" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high" width="1920" height="1080">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Wedding Story</h1>
@@ -39,7 +39,7 @@
         </div>
     </div>
     <main>
-        <section id="countdown" class="section-bg-dark scroll-reveal">
+        <section id="countdown" class="section-bg-dark scroll-reveal" data-countdown-date="2025-09-14T13:30:00">
             <div class="container">
                 <h2>Until We Get Married</h2>
                 <div id="timer">
@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Countdown Timer
+    const countdownSection = document.querySelector('#countdown');
     const daysEl = document.querySelector('#days');
     const hoursEl = document.querySelector('#hours');
     const minutesEl = document.querySelector('#minutes');
@@ -131,7 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerEl = document.querySelector('#timer');
 
     const countdown = () => {
-        const countDate = new Date('September 14, 2025 13:30:00').getTime();
+        const countDateString = countdownSection.dataset.countdownDate;
+        if (!countDateString) return;
+        const countDate = new Date(countDateString).getTime();
         const now = new Date().getTime();
         const gap = countDate - now;
 
@@ -167,15 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('is-open');
+        const isOpen = mainNav.classList.toggle('is-open');
+        menuToggle.classList.toggle('is-active');
         document.body.classList.toggle('no-scroll');
+        menuToggle.setAttribute('aria-expanded', isOpen);
     });
 
     // Close mobile menu when a link is clicked
     mainNav.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             mainNav.classList.remove('is-open');
+            menuToggle.classList.remove('is-active');
             document.body.classList.remove('no-scroll');
+            menuToggle.setAttribute('aria-expanded', 'false');
         }
     });
 

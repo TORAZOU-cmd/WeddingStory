@@ -7,7 +7,7 @@
 :root {
     --primary-pink: #fde7f0;
     --primary-green: #e2f5e3;
-    --accent-gold: #b89e68;
+    --accent-gold: #9D8041;
     --text-dark: #333;
     --text-light: #fff;
     --font-title: 'Great Vibes', cursive;
@@ -90,6 +90,19 @@ body.no-scroll {
     background-color: var(--text-dark);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.menu-toggle.is-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Mobile Nav Panel */
