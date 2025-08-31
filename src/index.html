@@ -85,7 +85,7 @@
                 <h2>Access Map</h2>
                 <div class="map-container">
                     <iframe
-                        src="https://www.google.com/maps?q=東京都八王子市鑓水530-2&output=embed"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6486.578651916651!2d139.33750387665117!3d35.620593272606946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60191d0be0e7dd51%3A0x32afff0a5be57118!2zUm95YWwgR2FyZGVuIFBhbGFjZSDlhavnjovlrZDml6XmnKzplqM!5e0!3m2!1sja!2sjp!4v1756654732635!5m2!1sja!2sjp"
                         style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
@@ -134,16 +134,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdown = () => {
         const countDateString = countdownSection.dataset.countdownDate;
         if (!countDateString) return;
-        const countDate = new Date(countDateString).getTime();
-        const now = new Date().getTime();
-        const gap = countDate - now;
 
-        if (gap < 0) {
+        const weddingDate = new Date(countDateString);
+        const partyEndDate = new Date(weddingDate);
+        partyEndDate.setHours(16, 0, 0, 0); // Set end time to 16:00 on the same day
+
+        const now = new Date();
+        const gap = weddingDate.getTime() - now.getTime();
+
+        // After the party ends
+        if (now.getTime() > partyEndDate.getTime()) {
             timerEl.innerHTML = '<h2>Thank you for celebrating with us!</h2>';
             clearInterval(countdownInterval);
             return;
         }
 
+        // During the party
+        if (gap < 0) {
+            timerEl.innerHTML = '<h2>Welcome & Enjoy!</h2>';
+            // We don't clear the interval, so it will switch to "Thank you" after 16:00
+            return;
+        }
+
+        // Before the wedding
         const second = 1000;
         const minute = second * 60;
         const hour = minute * 60;
