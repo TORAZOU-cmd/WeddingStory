@@ -11,14 +11,25 @@
 </head>
 <body>
     <header class="hero">
-        <img src="https://placehold.co/1200x800/E2F5E3/333?text=Our+Story" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high">
+        <img src="top.webp" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Wedding Story</h1>
-            <p class="subtitle">Ikuo &amp; Miki</p>
+            <p class="subtitle">Miki &amp; Ikuo</p>
         </div>
     </header>
     <main>
+        <section id="countdown" class="section-bg-dark scroll-reveal">
+            <div class="container">
+                <h2>Until We Get Married</h2>
+                <div id="timer">
+                    <div><span id="days">00</span> Days</div>
+                    <div><span id="hours">00</span> Hours</div>
+                    <div><span id="minutes">00</span> Minutes</div>
+                    <div><span id="seconds">00</span> Seconds</div>
+                </div>
+            </div>
+        </section>
         <section id="greeting" class="section-bg-green scroll-reveal">
             <div class="container">
                 <h2>Welcome</h2>
@@ -46,6 +57,22 @@
                 <h2>Gallery</h2>
                 <div class="photo-placeholder">
                     <p>Coming Soon</p>
+                </div>
+            </div>
+        </section>
+        <section id="map" class="section-bg-white scroll-reveal">
+            <div class="container">
+                <h2>Access Map</h2>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps?q=東京都八王子市鑓水530-2&output=embed"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -77,6 +104,36 @@ document.addEventListener('DOMContentLoaded', () => {
     targets.forEach(target => {
         observer.observe(target);
     });
+
+    // Countdown Timer
+    const countdown = () => {
+        const countDate = new Date('September 14, 2025 13:30:00').getTime();
+        const now = new Date().getTime();
+        const gap = countDate - now;
+
+        if (gap < 0) {
+            document.querySelector('#timer').innerHTML = '<h2>Thank you for celebrating with us!</h2>';
+            return;
+        }
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const textDay = Math.floor(gap / day);
+        const textHour = Math.floor((gap % day) / hour);
+        const textMinute = Math.floor((gap % hour) / minute);
+        const textSecond = Math.floor((gap % minute) / second);
+
+        document.querySelector('#days').innerText = String(textDay).padStart(2, '0');
+        document.querySelector('#hours').innerText = String(textHour).padStart(2, '0');
+        document.querySelector('#minutes').innerText = String(textMinute).padStart(2, '0');
+        document.querySelector('#seconds').innerText = String(textSecond).padStart(2, '0');
+    };
+
+    setInterval(countdown, 1000);
+    countdown(); // initial call
 });
 </script>
 
