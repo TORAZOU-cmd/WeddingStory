@@ -10,14 +10,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="hero">
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="site-title">Wedding Story</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#greeting">Welcome</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#info">Date &amp; Venue</a></li>
+                    <li><a href="#map">Access Map</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="hero">
         <img src="top.webp" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Wedding Story</h1>
             <p class="subtitle">Miki &amp; Ikuo</p>
         </div>
-    </header>
+    </div>
     <main>
         <section id="countdown" class="section-bg-dark scroll-reveal">
             <div class="container">
@@ -139,6 +159,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const countdownInterval = setInterval(countdown, 1000);
     countdown(); // initial call
+
+    // Header Navigation
+    const siteHeader = document.querySelector('.site-header');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    // Mobile Menu Toggle
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('is-open');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close mobile menu when a link is clicked
+    mainNav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            mainNav.classList.remove('is-open');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+
+    // Hide Header on Scroll
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        if (lastScrollY < window.scrollY && window.scrollY > 150) {
+            siteHeader.classList.add('is-hidden');
+        } else {
+            siteHeader.classList.remove('is-hidden');
+        }
+        lastScrollY = window.scrollY;
+    });
 });
 </script>
 
