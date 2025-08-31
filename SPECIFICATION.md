@@ -1,36 +1,36 @@
-# WeddingStory Header Navigation Design Specification
+# WeddingStory ヘッダーナビゲーション設計仕様書
 
-This document outlines the design and functionality of the header navigation for the WeddingStory website.
+本ドキュメントは、WeddingStoryウェブサイトのヘッダーナビゲーションに関する設計と機能を定義します。
 
-## 1. Navigation Items
-Based on the site's purpose and structure, the navigation will contain the following 5 items:
+## 1. ナビゲーション項目
+サイトの目的と構成に基づき、ナビゲーションには以下の5項目を含みます。
 
-- **Home**: Scrolls to the top of the page.
-- **Welcome**: Scrolls to the `#greeting` section.
-- **Gallery**: Scrolls to the `#gallery` section.
-- **Date & Venue**: Scrolls to the `#info` section.
-- **Access Map**: Scrolls to the `#map` section.
+- **Home**: ページのトップへスクロールします。
+- **Welcome**: `#greeting`セクションへスクロールします。
+- **Gallery**: `#gallery`セクションへスクロールします。
+- **Date & Venue**: `#info`セクションへスクロールします。
+- **Access Map**: `#map`セクションへスクロールします。
 
-## 2. Header Behavior on Scroll (PC & Mobile)
-The header will implement a "hiding" or "shy" behavior to maximize screen real estate for content.
+## 2. スクロール時のヘッダー挙動（PC・モバイル共通）
+コンテンツの表示領域を最大化するため、ヘッダーは「隠れる（shy）」挙動を実装します。
 
-- When the user scrolls **down**, the header will disappear.
-- When the user scrolls even slightly **up**, the header will reappear.
+- ユーザーが**下へ**スクロールすると、ヘッダーは非表示になります。
+- ユーザーが少しでも**上へ**スクロールすると、ヘッダーは再表示されます。
 
-## 3. Desktop View (Viewport >= 768px)
-- The header will display the site title, "Wedding Story", on the left.
-- The navigation items will be displayed horizontally on the right.
+## 3. デスクトップ表示 (ビューポート >= 768px)
+- ヘッダーの左側にはサイトタイトル「Wedding Story」を表示します。
+- ヘッダーの右側にはナビゲーション項目を水平に並べて表示します。
 
-## 4. Mobile View (Viewport < 768px)
-- The header will adopt a **hamburger menu** design.
-- The site title will be displayed on the left, and a hamburger menu icon will be displayed on the right.
-- The navigation links will be hidden by default.
+## 4. モバイル表示 (ビューポート < 768px)
+- ヘッダーには**ハンバーガーメニュー**を採用します。
+- サイトタイトルの左側に、ハンバーガーメニューアイコンを右側に表示します。
+- ナビゲーションリンクはデフォルトで非表示です。
 
-### Mobile Menu Interaction
-- Tapping the hamburger icon will cause a navigation menu panel to **slide in from the right** side of the screen.
-- The menu will contain the 5 navigation items, stacked vertically.
-- A "Close" (X) button will be present in the menu to dismiss it.
-- Tapping the semi-opaque overlay outside the menu will also dismiss it.
-- Tapping a navigation link will:
-    1. Smoothly scroll to the corresponding section.
-    2. Automatically close the menu.
+### モバイルメニューのインタラクション
+- ハンバーガーアイコンをタップすると、ナビゲーションメニューが画面の**右側からスライドイン**します。
+- メニューには5つのナビゲーション項目を垂直に並べて表示します。
+- メニュー内には「閉じる（X）」ボタンを配置します。
+- メニュー外の半透明なオーバーレイ部分をタップしてもメニューが閉じるようにします。
+- メニュー内のリンクをタップすると、以下の動作を行います。
+    1. 対応するセクションへスムーズにスクロールする。
+    2. メニューが自動的に閉じる。
