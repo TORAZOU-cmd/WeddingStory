@@ -189,12 +189,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide Header on Scroll
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-        if (lastScrollY < window.scrollY && window.scrollY > 150) {
+        const currentScrollY = window.scrollY;
+
+        // Add scrolled class for background effect
+        if (currentScrollY > 50) {
+            siteHeader.classList.add('is-scrolled');
+        } else {
+            siteHeader.classList.remove('is-scrolled');
+        }
+
+        // Hide/show header based on scroll direction
+        if (lastScrollY < currentScrollY && currentScrollY > 150) {
             siteHeader.classList.add('is-hidden');
         } else {
             siteHeader.classList.remove('is-hidden');
         }
-        lastScrollY = window.scrollY;
+
+        lastScrollY = currentScrollY;
     });
 });
 </script>
