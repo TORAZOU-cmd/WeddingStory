@@ -37,6 +37,14 @@
                 <p>ささやかではございますが、私たちのこれまでの歩みと、これからの誓いを皆様にご覧いただければ幸いです。</p>
             </div>
         </section>
+        <section id="gallery" class="section-bg-white scroll-reveal">
+            <div class="container">
+                <h2>Gallery</h2>
+                <div class="photo-placeholder">
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+        </section>
         <section id="info" class="section-bg-pink scroll-reveal">
             <div class="container">
                 <h2>Date &amp; Venue</h2>
@@ -52,22 +60,12 @@
                 </dl>
             </div>
         </section>
-        <section id="gallery" class="section-bg-green scroll-reveal">
-            <div class="container">
-                <h2>Gallery</h2>
-                <div class="photo-placeholder">
-                    <p>Coming Soon</p>
-                </div>
-            </div>
-        </section>
-        <section id="map" class="section-bg-white scroll-reveal">
+        <section id="map" class="section-bg-green scroll-reveal">
             <div class="container">
                 <h2>Access Map</h2>
                 <div class="map-container">
                     <iframe
                         src="https://www.google.com/maps?q=東京都八王子市鑓水530-2&output=embed"
-                        width="600"
-                        height="450"
                         style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
@@ -106,13 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Countdown Timer
+    const daysEl = document.querySelector('#days');
+    const hoursEl = document.querySelector('#hours');
+    const minutesEl = document.querySelector('#minutes');
+    const secondsEl = document.querySelector('#seconds');
+    const timerEl = document.querySelector('#timer');
+
     const countdown = () => {
         const countDate = new Date('September 14, 2025 13:30:00').getTime();
         const now = new Date().getTime();
         const gap = countDate - now;
 
         if (gap < 0) {
-            document.querySelector('#timer').innerHTML = '<h2>Thank you for celebrating with us!</h2>';
+            timerEl.innerHTML = '<h2>Thank you for celebrating with us!</h2>';
+            clearInterval(countdownInterval);
             return;
         }
 
@@ -126,13 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const textMinute = Math.floor((gap % hour) / minute);
         const textSecond = Math.floor((gap % minute) / second);
 
-        document.querySelector('#days').innerText = String(textDay).padStart(2, '0');
-        document.querySelector('#hours').innerText = String(textHour).padStart(2, '0');
-        document.querySelector('#minutes').innerText = String(textMinute).padStart(2, '0');
-        document.querySelector('#seconds').innerText = String(textSecond).padStart(2, '0');
+        daysEl.innerText = String(textDay).padStart(2, '0');
+        hoursEl.innerText = String(textHour).padStart(2, '0');
+        minutesEl.innerText = String(textMinute).padStart(2, '0');
+        secondsEl.innerText = String(textSecond).padStart(2, '0');
     };
 
-    setInterval(countdown, 1000);
+    const countdownInterval = setInterval(countdown, 1000);
     countdown(); // initial call
 });
 </script>
