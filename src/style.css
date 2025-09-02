@@ -152,7 +152,7 @@ body.no-scroll {
 /* --- Base Styles --- */
 .hero {
     position: relative;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,21 +239,21 @@ main section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 #timer > div {
     background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
-    min-width: 70px;
+    min-width: 60px;
 }
 
 #timer span {
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
@@ -333,7 +333,7 @@ footer {
 .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity 1.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .scroll-reveal.is-visible {
@@ -342,7 +342,7 @@ footer {
 }
 
 /* --- Tablet and Up --- */
-@media (min-width: 768px) {
+@media (min-width: 830px) {
     .menu-toggle {
         display: none;
     }
@@ -372,7 +372,6 @@ footer {
     }
 
     .hero {
-        height: 100vh;
     }
 
     .hero-content h1 {
