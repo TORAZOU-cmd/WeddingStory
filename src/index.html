@@ -1,49 +1,230 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Story</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1>WeddingStory</h1>
-            <p class="subtitle">Ikuo &amp; Miki</p>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="site-title">Wedding Story</a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#greeting">Welcome</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#info">Date &amp; Venue</a></li>
+                    <li><a href="#map">Access Map</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="main-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="hero">
+        <img src="top.webp" alt="新郎新婦のウェディング写真" class="hero-background-image" fetchpriority="high" width="1920"
+            height="1080">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Wedding Story</h1>
+            <p class="subtitle">Miki &amp; Ikuo</p>
+        </div>
+    </div>
     <main>
-        <div class="container">
-            <section id="greeting">
-                <h2>Welcome</h2>
-                <p>
-                この度は、私たちの結婚をお祝いいただき、誠にありがとうございます。<br>
-                ささやかではございますが、私たちのこれまでの歩みと、これからの誓いを皆様にご覧いただければ幸いです。
-            </p>
-        </section>
-        <section id="info">
-            <h2>Date &amp; Venue</h2>
-            <p>
-                <strong>Date:</strong> September 14, 2025, 13:30<br>
-                <strong>Venue:</strong> Nihonkaku (530-2 Yarimizu, Hachioji, Tokyo)
-            </p>
-        </section>
-        <section id="gallery">
-            <h2>Gallery</h2>
-            <div class="photo-placeholder">
-                <p>Coming Soon</p>
+        <section id="countdown" class="section-bg-dark scroll-reveal" data-countdown-date="2025-09-14T13:30:00">
+            <div class="container">
+                <h2>Until We Get Married</h2>
+                <div id="timer">
+                    <div><span id="days">00</span> Days</div>
+                    <div><span id="hours">00</span> Hours</div>
+                    <div><span id="minutes">00</span> Minutes</div>
+                    <div><span id="seconds">00</span> Seconds</div>
+                </div>
             </div>
         </section>
-        </div>
+        <section id="greeting" class="section-bg-green scroll-reveal">
+            <div class="container">
+                <h2>Welcome</h2>
+                <p>この度は、私たちの結婚をお祝いいただき、誠にありがとうございます。</p>
+                <p>ささやかではございますが、私たちのこれまでの歩みと、これからの誓いを皆様にご覧いただければ幸いです。</p>
+            </div>
+        </section>
+        <section id="gallery" class="section-bg-white scroll-reveal">
+            <div class="container">
+                <h2>Gallery</h2>
+                <div class="photo-placeholder">
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+        </section>
+        <section id="info" class="section-bg-pink scroll-reveal">
+            <div class="container">
+                <h2>Date &amp; Venue</h2>
+                <dl class="info-list">
+                    <div>
+                        <dt>Date:</dt>
+                        <dd>September 14, 2025, 13:30</dd>
+                    </div>
+                    <div>
+                        <dt>Venue:</dt>
+                        <dd>Nihonkaku (530-2 Yarimizu, Hachioji, Tokyo)</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+        <section id="map" class="section-bg-green scroll-reveal">
+            <div class="container">
+                <h2>Access Map</h2>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6486.578651916651!2d139.33750387665117!3d35.620593272606946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60191d0be0e7dd51%3A0x32afff0a5be57118!2zUm95YWwgR2FyZGVuIFBhbGFjZSDlhavnjovlrZDml6XmnKzplqM!5e0!3m2!1sja!2sjp!4v1756654732635!5m2!1sja!2sjp"
+                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2024 Ikuo &amp; Miki</p>
+            <p>&copy; 2025 Ikuo & Miki</p>
         </div>
     </footer>
+
+    <script>
+        // スクロールに応じたアニメーションを実行
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.scroll-reveal');
+            if (targets.length === 0) return;
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+
+            // Countdown Timer
+            const countdownSection = document.querySelector('#countdown');
+            const daysEl = document.querySelector('#days');
+            const hoursEl = document.querySelector('#hours');
+            const minutesEl = document.querySelector('#minutes');
+            const secondsEl = document.querySelector('#seconds');
+            const timerEl = document.querySelector('#timer');
+
+            const countdown = () => {
+                const countDateString = countdownSection.dataset.countdownDate;
+                if (!countDateString) return;
+
+                const weddingDate = new Date(countDateString);
+                const partyEndDate = new Date(weddingDate);
+                partyEndDate.setHours(16, 0, 0, 0); // Set end time to 16:00 on the same day
+
+                const now = new Date();
+                const gap = weddingDate.getTime() - now.getTime();
+
+                // After the party ends
+                if (now.getTime() > partyEndDate.getTime()) {
+                    timerEl.innerHTML = '<h2>Thank you for celebrating with us!</h2>';
+                    clearInterval(countdownInterval);
+                    return;
+                }
+
+                // During the party
+                if (gap < 0) {
+                    timerEl.innerHTML = '<h2>Welcome & Enjoy!</h2>';
+                    // We don't clear the interval, so it will switch to "Thank you" after 16:00
+                    return;
+                }
+
+                // Before the wedding
+                const second = 1000;
+                const minute = second * 60;
+                const hour = minute * 60;
+                const day = hour * 24;
+
+                const textDay = Math.floor(gap / day);
+                const textHour = Math.floor((gap % day) / hour);
+                const textMinute = Math.floor((gap % hour) / minute);
+                const textSecond = Math.floor((gap % minute) / second);
+
+                daysEl.innerText = String(textDay).padStart(2, '0');
+                hoursEl.innerText = String(textHour).padStart(2, '0');
+                minutesEl.innerText = String(textMinute).padStart(2, '0');
+                secondsEl.innerText = String(textSecond).padStart(2, '0');
+            };
+
+            const countdownInterval = setInterval(countdown, 1000);
+            countdown(); // initial call
+
+            // Header Navigation
+            const siteHeader = document.querySelector('.site-header');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            // Mobile Menu Toggle
+            menuToggle.addEventListener('click', () => {
+                const isOpen = mainNav.classList.toggle('is-open');
+                menuToggle.classList.toggle('is-active');
+                document.body.classList.toggle('no-scroll');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            });
+
+            // Close mobile menu when a link is clicked
+            mainNav.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    document.body.classList.remove('no-scroll');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Hide Header on Scroll
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+
+                // Add scrolled class for background effect
+                if (currentScrollY > 50) {
+                    siteHeader.classList.add('is-scrolled');
+                } else {
+                    siteHeader.classList.remove('is-scrolled');
+                }
+
+                // Hide/show header based on scroll direction
+                if (lastScrollY < currentScrollY && currentScrollY > 150) {
+                    siteHeader.classList.add('is-hidden');
+                } else {
+                    siteHeader.classList.remove('is-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+            });
+        });
+    </script>
+
 </body>
+
 </html>
